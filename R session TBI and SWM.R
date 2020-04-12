@@ -1,4 +1,4 @@
-# TBI and Spatial working memory in adults
+# TBI, spatial working memory and Attention in adults
 
 # Packages ----------------------------------------------------------------
 
@@ -291,7 +291,7 @@ ggplot(data = df, mapping = aes(x = yesinjd, y =ferrdir_mean)) +
                      panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))
 
 
-# errdir by distractor by injury ------------------------------------------
+# -- errdir by distractor by injury ------------------------------------------
 
 concussion <- read_csv("concussion.csv")
 concussioninjd <- read_csv("concussioninjd.csv")
@@ -301,7 +301,8 @@ coninjd <- left_join(adultswm, concussioninjd, by = "Subject")
 
 
 
-# difference between injured and not injured
+# --- injuried VS. not injuried -------------------------------------------
+
 con$Subject <- as.factor(con$Subject)
 coninjd$Subject <- as.factor(coninjd$Subject)
 concussion$Subject <- as.factor(concussion$Subject)
@@ -320,7 +321,9 @@ ggplot(data = conse_ca, mapping = aes(x = severity, y =errdir_mean, fill = sever
   geom_boxplot()+
   facet_grid(~distractor)
 
-#### generate attention plots
+
+# -- Attention  ------------------------------------------------------
+
 attention <- read.csv("attention-hlm.csv")
 
 df <- left_join(attention, concussion, by = "Subject")
@@ -352,8 +355,8 @@ ggplot(data = df, mapping = aes(x = worst, y = ANT_conflicteffect))+
   theme_bw() + theme(panel.border = element_blank(),
                      panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))
 
-#######################################################################
-#ABS
+
+# -- ABS ---------------------------------------------------------------------
 
 df <- con %>% 
   select(Subject, ABS_mm, yesinjd) %>% 
