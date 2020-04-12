@@ -1,2 +1,2 @@
 # Adult-TBI
-Head injury, spatial working memory & attention in adults
+Traumatic brain injury, spatial working memory & attention in adults
